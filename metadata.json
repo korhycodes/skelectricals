@@ -1,0 +1,6 @@
+{
+  "name": "SK Electricals - Electrical & Security Solutions",
+  "description": "Professional electrical engineering, wiring, CCTV surveillance, electric fencing, gate automation, and rapid repair services for residential and commercial clients.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
