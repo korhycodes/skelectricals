@@ -1,4 +1,8 @@
 import { ServiceItem } from '../types';
+import cctvImage from '../assets/images/cctv_security_system_1786657427837.jpg';
+import electricalWiringImage from '../assets/images/electrical_wiring_panel_1786657439139.jpg';
+import founderOfficeImage from '../assets/images/sk_founder_office_1786657415644.jpg';
+import fenceGateImage from '../assets/images/electric_fence_gate_1786657449395.jpg';
 
 export const servicesList: ServiceItem[] = [
   {
@@ -9,7 +13,7 @@ export const servicesList: ServiceItem[] = [
     description: 'Complete supply, wiring, configuration, and maintenance of high-definition IP dome, bullet, and PTZ camera surveillance networks for residences, commercial compounds, and industrial sites.',
     iconName: 'Camera',
     badge: 'High Demand',
-    heroImage: '/src/assets/images/cctv_security_system_1786657427837.jpg',
+    heroImage: cctvImage,
     features: [
       '4K & 1080p Ultra-HD IP Cameras with Starlight Night Vision',
       'Secure Remote Phone & Tablet Live Stream (iOS & Android)',
@@ -45,7 +49,7 @@ export const servicesList: ServiceItem[] = [
     description: 'Transform outdated electrical distribution boxes, upgrade from single to three-phase capacity, install surge arrestors, and integrate solar hybrid inverters for uninterrupted power security.',
     iconName: 'Zap',
     badge: 'Efficiency & Safety',
-    heroImage: '/src/assets/images/electrical_wiring_panel_1786657439139.jpg',
+    heroImage: electricalWiringImage,
     features: [
       'Main Distribution Board (DB) Replacement & Modern Circuit Breakers',
       'Single-Phase to Three-Phase Power Load Balancing & Upgrades',
@@ -81,7 +85,7 @@ export const servicesList: ServiceItem[] = [
     description: 'Fast, dependable response when power goes down or electrical faults occur. Our certified technicians carry advanced digital multimeters, insulation testers, and spare components to resolve emergencies on the spot.',
     iconName: 'Wrench',
     badge: '24/7 Rapid Dispatch',
-    heroImage: '/src/assets/images/sk_founder_office_1786657415644.jpg',
+    heroImage: founderOfficeImage,
     features: [
       '24/7 Emergency Dispatch with Under 45-Minute Average Response',
       'Precision Fault Finding, Ground Leakage & Short Circuit Isolation',
@@ -117,7 +121,7 @@ export const servicesList: ServiceItem[] = [
     description: 'From new construction conduit piping to complete structural rewiring, we execute clean, color-coded, fire-retardant wiring according to the strictest electrical safety codes.',
     iconName: 'Cpu',
     badge: 'Master Craftsmanship',
-    heroImage: '/src/assets/images/electrical_wiring_panel_1786657439139.jpg',
+    heroImage: electricalWiringImage,
     features: [
       'Concealed Flush PVC & Metal Conduit Pipe Laying',
       'Pure Copper Flame-Retardant Cable Pulling (1.5mm² to 35mm²+)',
@@ -153,7 +157,7 @@ export const servicesList: ServiceItem[] = [
     description: 'Deter, detect, and delay intruders before they breach your compound. We engineer multi-strand stainless steel and high-tensile aluminum fences powered by certified smart energizers.',
     iconName: 'ShieldAlert',
     badge: 'Perimeter Defense',
-    heroImage: '/src/assets/images/electric_fence_gate_1786657449395.jpg',
+    heroImage: fenceGateImage,
     features: [
       '6, 8, 10 & 12-Strand High-Tensile Wall-Top & Free-Standing Systems',
       'Certified 8,000V – 10,000V Pulse Shock Smart Energizers',
@@ -189,7 +193,7 @@ export const servicesList: ServiceItem[] = [
     description: 'Transform your driveway gate into a seamless automated portal. We install industry-leading sliding and double-swing gate motors featuring smooth soft-stop mechanisms, obstacle anti-crush sensors, and emergency battery backup.',
     iconName: 'DoorClosed',
     badge: 'Convenience & Safety',
-    heroImage: '/src/assets/images/electric_fence_gate_1786657449395.jpg',
+    heroImage: fenceGateImage,
     features: [
       'High-Speed Heavy-Duty Motors (Handling 400kg to 2,000kg Gates)',
       'Infrared Anti-Crush Safety Photobeams to Protect Vehicles & Pedestrians',

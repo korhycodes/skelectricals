@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import founderOfficeImage from '../assets/images/sk_founder_office_1786657415644.jpg';
 import { 
   Phone, 
   Calculator, 
@@ -153,7 +154,7 @@ export function HeroSection({ onOpenBooking, onOpenEstimator }: HeroSectionProps
             {/* Visual Container */}
             <div className="relative rounded-2xl overflow-hidden bg-slate-900 border-4 border-white shadow-2xl">
               <img
-                src="/src/assets/images/sk_founder_office_1786657415644.jpg"
+                src={founderOfficeImage}
                 alt="SK Electricals Founder & Lead Engineer at the headquarters office"
                 className="w-full h-auto object-cover object-center transform hover:scale-102 transition-transform duration-700"
                 referrerPolicy="no-referrer"

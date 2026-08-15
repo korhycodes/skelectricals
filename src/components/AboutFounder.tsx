@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import founderOfficeImage from '../assets/images/sk_founder_office_1786657415644.jpg';
 import { 
   Award, 
   CheckCircle2, 
@@ -32,7 +33,7 @@ export function AboutFounder({ onOpenBooking }: AboutFounderProps) {
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900">
               <img
-                src="/src/assets/images/sk_founder_office_1786657415644.jpg"
+                src={founderOfficeImage}
                 alt="SK Electricals Founder & Lead Engineer in office"
                 className="w-full h-auto object-cover"
                 referrerPolicy="no-referrer"

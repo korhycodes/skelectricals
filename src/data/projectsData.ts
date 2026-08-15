@@ -1,4 +1,8 @@
 import { ProjectItem, TestimonialItem, FAQItem, SafetyQuestion } from '../types';
+import electricalWiringImage from '../assets/images/electrical_wiring_panel_1786657439139.jpg';
+import cctvImage from '../assets/images/cctv_security_system_1786657427837.jpg';
+import fenceGateImage from '../assets/images/electric_fence_gate_1786657449395.jpg';
+import founderOfficeImage from '../assets/images/sk_founder_office_1786657415644.jpg';
 
 export const projectsList: ProjectItem[] = [
   {
@@ -9,7 +13,7 @@ export const projectsList: ProjectItem[] = [
     location: 'Central Business District',
     duration: '4 Days',
     summary: 'Turnkey electrical modernization for a 3-storey office building, upgrading from 60A to a 200A 3-phase system with automated generator ATS cutover and Class I surge suppression.',
-    image: '/src/assets/images/electrical_wiring_panel_1786657439139.jpg',
+    image: electricalWiringImage,
     keyHighlights: [
       'Eliminated voltage drop across server infrastructure',
       'Dual SPD surge protection safeguarding $120k worth of electronics',
@@ -25,7 +29,7 @@ export const projectsList: ProjectItem[] = [
     location: 'Emerald Hills Estate',
     duration: '2 Days',
     summary: 'Full perimeter 4K IP camera network featuring starlight night vision, perimeter intrusion line tripwire alerts, and synchronized live view across family smartphones and central security station.',
-    image: '/src/assets/images/cctv_security_system_1786657427837.jpg',
+    image: cctvImage,
     keyHighlights: [
       'Zero blind spots with 16 ultra-wide 4K dome & bullet cameras',
       'Instant smartphone push notifications on boundary line crossing',
@@ -41,7 +45,7 @@ export const projectsList: ProjectItem[] = [
     location: 'Palm Crest Heights',
     duration: '2 Days',
     summary: 'Complete perimeter physical & electronic hardening: heavy-duty 800kg sliding gate motor automation paired with a 10-strand wall-top electric fence connected to GSM alert dialers.',
-    image: '/src/assets/images/electric_fence_gate_1786657449395.jpg',
+    image: fenceGateImage,
     keyHighlights: [
       'Centurion heavy-duty motor with 30m/min opening turbo speed',
       '9,500V pulse energizer with integrated anti-cut & anti-tamper siren',
@@ -57,7 +61,7 @@ export const projectsList: ProjectItem[] = [
     location: 'Airport Tech Corridor',
     duration: '10 Days',
     summary: 'Complete conduit piping, fire-resistant cable pulling, architectural lighting distribution, and low-resistance deep copper grounding grid (< 2.1 Ohms) for 24 startup offices.',
-    image: '/src/assets/images/electrical_wiring_panel_1786657439139.jpg',
+    image: electricalWiringImage,
     keyHighlights: [
       'Tested to IEC standards with digital insulation tester',
       'Clean color-coded cable identification with zero cross-talk',
@@ -73,7 +77,7 @@ export const projectsList: ProjectItem[] = [
     location: 'Metro Plaza',
     duration: '2 Hours (Emergency Dispatch)',
     summary: 'Emergency dispatch within 25 minutes after main breaker trip paralyzed diagnostic imaging machines. Technicians quickly isolated ground fault in autoclave heater and restored power.',
-    image: '/src/assets/images/sk_founder_office_1786657415644.jpg',
+    image: founderOfficeImage,
     keyHighlights: [
       'Arrived in 22 minutes with specialized Fluke diagnostic gear',
       'Isolated hazardous short without cutting power to vital cold storage',
