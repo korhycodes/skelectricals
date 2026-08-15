@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, X } from 'lucide-react';
 
@@ -25,13 +25,32 @@ export default function App() {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [bookingInitialService, setBookingInitialService] = useState<string | undefined>(undefined);
   const [bookingInitialNotes, setBookingInitialNotes] = useState<string | undefined>(undefined);
-  
+
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const toastTimeoutRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (toastTimeoutRef.current !== null) {
+        window.clearTimeout(toastTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const clearToast = () => {
+    if (toastTimeoutRef.current !== null) {
+      window.clearTimeout(toastTimeoutRef.current);
+      toastTimeoutRef.current = null;
+    }
+    setToastMessage(null);
+  };
 
   const showToast = (msg: string) => {
+    clearToast();
     setToastMessage(msg);
-    setTimeout(() => {
+    toastTimeoutRef.current = window.setTimeout(() => {
       setToastMessage(null);
+      toastTimeoutRef.current = null;
     }, 5000);
   };
 
@@ -77,7 +96,7 @@ export default function App() {
               {toastMessage}
             </div>
             <button
-              onClick={() => setToastMessage(null)}
+              onClick={clearToast}
               className="text-slate-400 hover:text-white transition-colors"
             >
               <X className="w-4 h-4" />
