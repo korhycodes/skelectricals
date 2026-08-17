@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import founderOfficeImage from '../assets/images/sk_founder_office_1786657415644.jpg';
+import founderOfficeImage from '../assets/images/sk-founder-office.png';
 import { 
   Phone, 
   Calculator, 
@@ -33,9 +33,9 @@ export function HeroSection({ onOpenBooking, onOpenEstimator }: HeroSectionProps
   ];
 
   return (
-    <section id="hero" className="relative pt-32 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-gradient-to-b from-slate-100 via-white to-slate-50">
+    <section id="hero" className="relative pt-32 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-linear-to-b from-slate-100 via-white to-slate-50">
       {/* Subtle background electrical mesh grid */}
-      <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#1e3a8a_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+      <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#1e3a8a_1px,transparent_1px)] [bg-size:24px_24px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -56,7 +56,7 @@ export function HeroSection({ onOpenBooking, onOpenEstimator }: HeroSectionProps
             {/* Main Headline from Client's Signboard */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-950 tracking-tight leading-[1.1]">
               Solve Electrical <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-blue-800 to-amber-600">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-700 via-blue-800 to-amber-600">
                 Issues Fast.
               </span>
             </h1>
@@ -114,11 +114,11 @@ export function HeroSection({ onOpenBooking, onOpenEstimator }: HeroSectionProps
               </button>
 
               <a
-                href="tel:+233240000000"
+                href="tel:+233261873047"
                 className="px-4 py-3.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-800 font-bold text-sm transition-all flex items-center gap-2"
               >
                 <Phone className="w-4 h-4 text-emerald-600" />
-                <span>Call +233 24 000 0000</span>
+                <span>Call +233 26 187 3947</span>
               </a>
             </div>
 
@@ -161,7 +161,7 @@ export function HeroSection({ onOpenBooking, onOpenEstimator }: HeroSectionProps
               />
 
               {/* Gradient overlay on bottom for text readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
 
               {/* Floating Top Badge */}
               <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">

@@ -1,7 +1,7 @@
 import { ServiceItem } from '../types';
 import cctvImage from '../assets/images/cctv_security_system_1786657427837.jpg';
 import electricalWiringImage from '../assets/images/electrical_wiring_panel_1786657439139.jpg';
-import founderOfficeImage from '../assets/images/sk_founder_office_1786657415644.jpg';
+import founderOfficeImage from '../assets/images/sk-founder-office.png';
 import fenceGateImage from '../assets/images/electric_fence_gate_1786657449395.jpg';
 
 export const servicesList: ServiceItem[] = [

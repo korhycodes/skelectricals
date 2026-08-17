@@ -42,14 +42,14 @@ export function Footer({ onOpenBooking, onOpenEstimator }: FooterProps) {
 
             <div className="pt-2 flex items-center gap-3">
               <a
-                href="tel:+233240000000"
+                href="tel:+233261873047"
                 className="px-3 py-1.5 rounded-lg bg-blue-900/80 hover:bg-blue-800 text-white text-xs font-bold transition-colors flex items-center gap-1.5"
               >
                 <Phone className="w-3.5 h-3.5 text-amber-400" />
-                <span>+233 24 000 0000</span>
+                <span>+233 26 187 3047</span>
               </a>
               <a
-                href="https://wa.me/233240000000"
+                href="https://wa.me/233241587391?text=Hello%20SK%20Electricals,%20I%20would%20like%20to%20inquire%20about%20your%20services."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-3 py-1.5 rounded-lg bg-emerald-950 hover:bg-emerald-900 text-emerald-300 border border-emerald-800 text-xs font-bold transition-colors flex items-center gap-1.5"

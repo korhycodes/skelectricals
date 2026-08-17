@@ -15,7 +15,7 @@ export function EmergencyBanner({ onOpenBooking }: EmergencyBannerProps) {
   ];
 
   return (
-    <section id="emergency" className="py-16 bg-gradient-to-r from-blue-950 via-slate-900 to-blue-900 text-white relative overflow-hidden">
+    <section id="emergency" className="py-16 bg-linear-to-r from-blue-950 via-slate-900 to-blue-900 text-white relative overflow-hidden">
       {/* Background glow effects */}
       <div className="absolute -top-24 -right-24 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -41,7 +41,7 @@ export function EmergencyBanner({ onOpenBooking }: EmergencyBannerProps) {
             {/* Quick Contact Buttons */}
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <a
-                href="tel:+233240000000"
+                href="tel:+233261873047"
                 className="px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider shadow-lg hover:shadow-xl transition-all flex items-center gap-2"
               >
                 <Phone className="w-4 h-4 fill-slate-950" />
@@ -49,7 +49,7 @@ export function EmergencyBanner({ onOpenBooking }: EmergencyBannerProps) {
               </a>
 
               <a
-                href="https://wa.me/233240000000?text=EMERGENCY:%20I%20need%20urgent%20electrical/gate/security%20assistance"
+                href="https://wa.me/233241587391?text=EMERGENCY:%20I%20need%20urgent%20electrical/gate/security%20assistance"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-5 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2 shadow-md"

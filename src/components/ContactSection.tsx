@@ -78,8 +78,8 @@ export function ContactSection({ onSuccessSubmit }: ContactSectionProps) {
                   <Phone className="w-5 h-5" />
                 </div>
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">Phone Hotline</h4>
-                <a href="tel:+233240000000" className="text-base font-bold text-slate-900 hover:text-blue-600 block">
-                  +233 24 000 0000
+                <a href="tel:+233261873047" className="text-base font-bold text-slate-900 hover:text-blue-600 block">
+                  +233 26 187 3047
                 </a>
                 <p className="text-[11px] text-slate-500">24/7 Emergency & General Inquiries</p>
               </div>
@@ -90,7 +90,7 @@ export function ContactSection({ onSuccessSubmit }: ContactSectionProps) {
                 </div>
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">WhatsApp Fast Chat</h4>
                 <a
-                  href="https://wa.me/233240000000?text=Hello%20SK%20Electricals"
+                  href="https://wa.me/233241587391?text=Hello%20SK%20Electricals"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-base font-bold text-emerald-700 hover:underline block"

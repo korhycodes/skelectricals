@@ -193,7 +193,7 @@ export function CostEstimator({ onBookWithEstimate }: CostEstimatorProps) {
                       <span className={`w-4 h-4 rounded-full border flex items-center justify-center ${
                         selectedServiceId === opt.id ? 'border-blue-600 bg-blue-600 text-white' : 'border-slate-300'
                       }`}>
-                        {selectedServiceId === opt.id && <Check className="w-2.5 h-2.5 stroke-[3]" />}
+                        {selectedServiceId === opt.id && <Check className="w-2.5 h-2.5 stroke-3" />}
                       </span>
                     </div>
                     <p className="text-xs text-slate-500 mt-1 line-clamp-1">{opt.description}</p>
@@ -302,7 +302,7 @@ export function CostEstimator({ onBookWithEstimate }: CostEstimatorProps) {
 
           {/* Right Column: Dynamic Price Summary Card */}
           <div className="lg:col-span-5 flex flex-col justify-between">
-            <div className="bg-gradient-to-br from-slate-900 to-blue-950 text-white rounded-2xl p-6 sm:p-8 shadow-xl border border-blue-800 space-y-6">
+            <div className="bg-linear-to-br from-slate-900 to-blue-950 text-white rounded-2xl p-6 sm:p-8 shadow-xl border border-blue-800 space-y-6">
               
               <div className="flex items-center justify-between border-b border-white/15 pb-4">
                 <div>

@@ -38,7 +38,7 @@ export function ServiceDetailModal({ service, onClose, onBook }: ServiceDetailMo
               className="w-full h-full object-cover opacity-80"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/40 to-transparent" />
             <div className="absolute bottom-4 left-6 right-6 text-white">
               <span className="inline-block px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider bg-amber-500 text-slate-950 mb-2">
                 {service.badge}
@@ -110,7 +110,7 @@ export function ServiceDetailModal({ service, onClose, onBook }: ServiceDetailMo
           {/* Footer Actions */}
           <div className="p-4 sm:p-6 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
             <a
-              href="tel:+233240000000"
+              href="tel:+233261873047"
               className="inline-flex items-center gap-2 text-xs font-bold text-slate-700 hover:text-blue-600 py-2 px-3 rounded-lg hover:bg-slate-100 transition-colors"
             >
               <Phone className="w-4 h-4 text-emerald-600" />

@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import founderOfficeImage from '../assets/images/sk_founder_office_1786657415644.jpg';
+import founderOfficeImage from '../assets/images/sk-founder-office.png';
 import { 
   Award, 
   CheckCircle2, 
@@ -129,11 +129,11 @@ export function AboutFounder({ onOpenBooking }: AboutFounderProps) {
               </button>
 
               <a
-                href="tel:+233240000000"
+                href="tel:+233261873047"
                 className="inline-flex items-center gap-2 text-xs font-bold text-slate-800 hover:text-blue-600 transition-colors"
               >
                 <Phone className="w-4 h-4 text-emerald-600" />
-                <span>Call Directly: +233 24 000 0000</span>
+                <span>Call Directly: +233 26 187 3047</span>
               </a>
             </div>
 

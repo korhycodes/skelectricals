@@ -53,7 +53,7 @@ export function Navbar({ onOpenBooking, onOpenEstimator }: NavbarProps) {
 
           <div className="flex items-center gap-4">
             <a
-              href="https://wa.me/233240000000?text=Hello%20SK%20Electricals,%20I%20need%20electrical/security%20assistance"
+              href="https://wa.me/233241587391?text=Hello%20SK%20Electricals,%20I%20need%20electrical/security%20assistance"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors font-medium"
@@ -62,11 +62,11 @@ export function Navbar({ onOpenBooking, onOpenEstimator }: NavbarProps) {
               <span className="hidden sm:inline">WhatsApp Fast Line</span>
             </a>
             <a
-              href="tel:+233240000000"
+              href="tel:+233261873047"
               className="inline-flex items-center gap-1.5 font-bold text-white hover:text-amber-400 transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-amber-400" />
-              <span>+233 24 000 0000</span>
+              <span>+233 26 187 3047</span>
             </a>
           </div>
         </div>
@@ -83,7 +83,7 @@ export function Navbar({ onOpenBooking, onOpenEstimator }: NavbarProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Brand Logo matching SK Electricals official emblem */}
           <a href="#" className="flex items-center gap-2 group">
-            <div className="relative flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-blue-900 to-blue-700 shadow-md text-white font-black text-xl tracking-tighter transition-transform group-hover:scale-105">
+            <div className="relative flex items-center justify-center w-11 h-11 rounded-xl bg-linear-to-br from-blue-900 to-blue-700 shadow-md text-white font-black text-xl tracking-tighter transition-transform group-hover:scale-105">
               <span className="text-white font-extrabold">S</span>
               <Zap className="w-5 h-5 text-amber-400 fill-amber-400 -mx-1 drop-shadow" />
               <span className="text-white font-extrabold">K</span>
@@ -124,7 +124,7 @@ export function Navbar({ onOpenBooking, onOpenEstimator }: NavbarProps) {
             <button
               id="nav-booking-btn"
               onClick={() => onOpenBooking()}
-              className="px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-blue-700 to-blue-600 hover:from-blue-800 hover:to-blue-700 rounded-lg shadow-sm hover:shadow transition-all flex items-center gap-1.5"
+              className="px-4 py-2 text-xs font-bold text-white bg-linear-to-r from-blue-700 to-blue-600 hover:from-blue-800 hover:to-blue-700 rounded-lg shadow-sm hover:shadow transition-all flex items-center gap-1.5"
             >
               <Zap className="w-3.5 h-3.5 text-amber-300 fill-amber-300" />
               Request Dispatch

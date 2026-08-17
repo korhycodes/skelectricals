@@ -76,7 +76,7 @@ export function BookingModal({ isOpen, onClose, initialService, initialNotes }: 
           className="relative bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border border-slate-200 text-left my-8"
         >
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-900 to-slate-900 text-white p-6 relative">
+          <div className="bg-linear-to-r from-blue-900 to-slate-900 text-white p-6 relative">
             <button
               onClick={handleResetAndClose}
               className="absolute top-5 right-5 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
@@ -143,7 +143,7 @@ export function BookingModal({ isOpen, onClose, initialService, initialNotes }: 
 
                 <div className="flex flex-col sm:flex-row items-center gap-3 pt-3">
                   <a
-                    href={`https://wa.me/233240000000?text=Hi%20SK%20Electricals,%20I%20just%20submitted%20booking%20ref%20${bookingRef}%20for%20${encodeURIComponent(formData.serviceType)}`}
+                    href={`https://wa.me/233241587391?text=Hi%20SK%20Electricals,%20I%20just%20submitted%20booking%20ref%20${bookingRef}%20for%20${encodeURIComponent(formData.serviceType)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full sm:w-1/2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-2"
