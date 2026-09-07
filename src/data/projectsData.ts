@@ -3,33 +3,39 @@ import electricalWiringImage from '../assets/images/electrical_wiring_panel_1786
 import cctvImage from '../assets/images/cctv_security_system_1786657427837.jpg';
 import fenceGateImage from '../assets/images/electric_fence_gate_1786657449395.jpg';
 import founderOfficeImage from '../assets/images/sk-founder-office.png';
+import projectOneVideo from '../assets/videos/project-1.mp4';
+import projectTwoVideo from '../assets/videos/project-2.mp4';
+import projectThreeVideo from '../assets/videos/project-3.mp4';
+import projectFourVideo from '../assets/videos/project-4.mp4';
 
 export const projectsList: ProjectItem[] = [
   {
     id: 'proj-1',
-    title: 'Commercial HQ Comprehensive Wiring & 3-Phase DB Upgrade',
-    category: 'Panel Upgrades',
+    title: 'Commercial HQ Comprehensive Conduit Piping & Wiring',
+    category: 'Wiring & Conduit',
     clientType: 'Commercial',
     location: 'Central Business District',
     duration: '4 Days',
-    summary: 'Turnkey electrical modernization for a 3-storey office building, upgrading from 60A to a 200A 3-phase system with automated generator ATS cutover and Class I surge suppression.',
+    summary: 'Turnkey electrical modernization for a 3-storey office building.',
     image: electricalWiringImage,
+    video: projectOneVideo,
     keyHighlights: [
-      'Eliminated voltage drop across server infrastructure',
-      'Dual SPD surge protection safeguarding $120k worth of electronics',
-      '100% compliant electrical certificate issued'
+      'Eliminated frequent breaker trips with 3-phase load balancing',
+      'Dual redundant earthing rods with < 2.1 Ohm resistance for sensitive server rooms',
+      '100% copper conduit piping with color-coded cable identification for zero cross-talk and interference'
     ],
-    specs: '200A 3-Phase • 36-Way Distribution Board • Smart Energy Metering'
+    specs: 'pure copper wiring • 3-phase distribution board • deep copper earthing rods'
   },
   {
     id: 'proj-2',
-    title: 'Luxury Villa 16-Camera 4K Surveillance & App Integration',
+    title: 'Luxury Villa 16-Camera Installation with Night Vision & Mobile Alerts',
     category: 'CCTV & Security',
     clientType: 'Residential',
-    location: 'Emerald Hills Estate',
+    location: 'East Legon Estate',
     duration: '2 Days',
     summary: 'Full perimeter 4K IP camera network featuring starlight night vision, perimeter intrusion line tripwire alerts, and synchronized live view across family smartphones and central security station.',
     image: cctvImage,
+    video: projectTwoVideo,
     keyHighlights: [
       'Zero blind spots with 16 ultra-wide 4K dome & bullet cameras',
       'Instant smartphone push notifications on boundary line crossing',
@@ -39,13 +45,14 @@ export const projectsList: ProjectItem[] = [
   },
   {
     id: 'proj-3',
-    title: 'Integrated Automated Sliding Gate & 10-Strand Electric Fence',
-    category: 'Gate & Fence',
+    title: 'Conduit Piping Installation for Electrical Wiring',
+    category: 'Wiring & Conduit',
     clientType: 'Residential',
     location: 'Palm Crest Heights',
-    duration: '2 Days',
+    duration: '8 Days',
     summary: 'Complete perimeter physical & electronic hardening: heavy-duty 800kg sliding gate motor automation paired with a 10-strand wall-top electric fence connected to GSM alert dialers.',
     image: fenceGateImage,
+    video: projectThreeVideo,
     keyHighlights: [
       'Centurion heavy-duty motor with 30m/min opening turbo speed',
       '9,500V pulse energizer with integrated anti-cut & anti-tamper siren',
@@ -59,9 +66,10 @@ export const projectsList: ProjectItem[] = [
     category: 'Wiring & Conduit',
     clientType: 'Commercial',
     location: 'Airport Tech Corridor',
-    duration: '10 Days',
+    duration: '3 Days',
     summary: 'Complete conduit piping, fire-resistant cable pulling, architectural lighting distribution, and low-resistance deep copper grounding grid (< 2.1 Ohms) for 24 startup offices.',
     image: electricalWiringImage,
+    video: projectFourVideo,
     keyHighlights: [
       'Tested to IEC standards with digital insulation tester',
       'Clean color-coded cable identification with zero cross-talk',

@@ -1,147 +1,92 @@
-import { useState } from 'react';
-import { motion } from 'motion/react';
-import { 
-  FolderCheck, 
-  MapPin, 
-  Clock, 
-  CheckCircle2, 
-  ArrowRight,
-  ExternalLink,
-  Filter
-} from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
+import { ArrowLeft, ArrowRight, CheckCircle2, Clock, FolderCheck, MapPin, Play, Video } from 'lucide-react';
 import { projectsList } from '../data/projectsData';
-import { ProjectItem } from '../types';
 
 interface ProjectsShowcaseProps {
   onBookProjectScope: (projectTitle: string) => void;
 }
 
 export function ProjectsShowcase({ onBookProjectScope }: ProjectsShowcaseProps) {
-  const [activeCategory, setActiveCategory] = useState<string>('All');
-
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeIndex, setActiveIndex] = useState(0);
   const categories = ['All', 'CCTV & Security', 'Wiring & Conduit', 'Gate & Fence', 'Panel Upgrades', 'Repairs & Maintenance'];
+  const filteredProjects = activeCategory === 'All' ? projectsList : projectsList.filter((project) => project.category === activeCategory);
+  const activeProject = filteredProjects[activeIndex] || filteredProjects[0];
 
-  const filteredProjects = activeCategory === 'All'
-    ? projectsList
-    : projectsList.filter(p => p.category === activeCategory);
+  useEffect(() => setActiveIndex(0), [activeCategory]);
+
+  const moveCarousel = (direction: number) => {
+    setActiveIndex((current) => (current + direction + filteredProjects.length) % filteredProjects.length);
+  };
+
+  if (!activeProject) return null;
 
   return (
-    <section id="projects" className="py-20 bg-slate-100/70 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 text-blue-900 text-xs font-bold uppercase tracking-wider mb-3">
-            <FolderCheck className="w-3.5 h-3.5 text-blue-700" />
-            <span>Proven Track Record</span>
+    <section id="projects" className="relative overflow-hidden bg-slate-100/70 py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto mb-12 max-w-3xl text-center">
+          <div className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-blue-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-blue-900">
+            <FolderCheck className="h-3.5 w-3.5 text-blue-700" />
+            <span>On-Site Work Reels</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-950 tracking-tight">
-            Featured Engineering Projects
-          </h2>
-          <p className="text-base sm:text-lg text-slate-600 mt-2">
-            Explore recent residential complexes, corporate office towers, and industrial perimeter hardening completed by SK Electricals.
-          </p>
-
-          {/* Category Filter Pills */}
+          <h2 className="text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">Recent Projects</h2>
+          <p className="mt-2 text-base text-slate-600 sm:text-lg">Browse our latest electrical, security, and automation work in a vertical 9:16 project reel.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                  activeCategory === cat
-                    ? 'bg-blue-700 text-white shadow-sm'
-                    : 'bg-white text-slate-700 hover:bg-slate-200 border border-slate-200'
-                }`}
-              >
-                {cat}
+            {categories.map((category) => (
+              <button key={category} onClick={() => setActiveCategory(category)} className={`rounded-xl px-4 py-2 text-xs font-bold transition-all ${activeCategory === category ? 'bg-blue-700 text-white shadow-sm' : 'border border-slate-200 bg-white text-slate-700 hover:bg-slate-200'}`}>
+                {category}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-          {filteredProjects.map((proj, idx) => (
-            <motion.div
-              key={proj.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.08 }}
-              className="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex flex-col justify-between group"
-            >
-              {/* Project Image */}
-              <div className="relative h-52 overflow-hidden bg-slate-900">
-                <img
-                  src={proj.image}
-                  alt={proj.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
-                
-                <div className="absolute top-3 left-3 flex gap-2">
-                  <span className="px-2.5 py-1 rounded-md text-[11px] font-bold bg-blue-700 text-white shadow-sm">
-                    {proj.category}
-                  </span>
-                  <span className="px-2.5 py-1 rounded-md text-[11px] font-bold bg-white/95 text-slate-900 shadow-sm">
-                    {proj.clientType}
-                  </span>
-                </div>
-
-                <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white text-xs">
-                  <span className="flex items-center gap-1 text-slate-300 font-medium">
-                    <MapPin className="w-3.5 h-3.5 text-amber-400" />
-                    {proj.location}
-                  </span>
-                  <span className="flex items-center gap-1 text-slate-300 font-medium">
-                    <Clock className="w-3.5 h-3.5 text-blue-400" />
-                    {proj.duration}
-                  </span>
-                </div>
-              </div>
-
-              {/* Project Body */}
-              <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                <div>
-                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-700 transition-colors leading-snug">
-                    {proj.title}
-                  </h3>
-                  <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                    {proj.summary}
-                  </p>
-
-                  {/* Highlights */}
-                  <div className="mt-4 space-y-1.5 pt-3 border-t border-slate-100">
-                    {proj.keyHighlights.map((hl, i) => (
-                      <div key={i} className="flex items-start gap-2 text-xs text-slate-700">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                        <span>{hl}</span>
-                      </div>
-                    ))}
+        <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 lg:flex-row lg:items-stretch lg:justify-center">
+          <div className="relative w-full max-w-[360px] shrink-0">
+            <div className="aspect-[9/16] overflow-hidden rounded-[2rem] border-[6px] border-slate-950 bg-slate-950 shadow-2xl">
+              <AnimatePresence mode="wait">
+                <motion.div key={activeProject.id} initial={{ opacity: 0, scale: 1.04 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.98 }} transition={{ duration: 0.3 }} className="relative h-full w-full">
+                  {activeProject.video ? (
+                    <video className="h-full w-full object-cover" src={activeProject.video} poster={activeProject.image} controls playsInline preload="metadata" />
+                  ) : (
+                    <img src={activeProject.image} alt={activeProject.title} className="h-full w-full object-cover" referrerPolicy="no-referrer" />
+                  )}
+                  <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/20 to-transparent" />
+                  <div className="absolute left-5 right-5 top-5 flex items-center justify-between">
+                    <span className="rounded-md bg-blue-700 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white">{activeProject.category}</span>
+                    <span className="flex items-center gap-1 rounded-full bg-slate-950/70 px-2.5 py-1 text-[10px] font-bold text-white backdrop-blur-sm">
+                      {activeProject.video ? <Video className="h-3 w-3 text-amber-400" /> : <Play className="h-3 w-3 text-amber-400" />}
+                      {activeProject.video ? 'Video' : 'Project reel'}
+                    </span>
                   </div>
-                </div>
+                  <div className="absolute bottom-5 left-5 right-5 text-white">
+                    <div className="mb-2 flex items-center gap-3 text-[11px] text-slate-300">
+                      <span className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5 text-amber-400" />{activeProject.location}</span>
+                      <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5 text-blue-400" />{activeProject.duration}</span>
+                    </div>
+                    <h3 className="text-xl font-black leading-tight">{activeProject.title}</h3>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+            <button onClick={() => moveCarousel(-1)} aria-label="Previous project" className="absolute -left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white text-slate-900 shadow-lg ring-1 ring-slate-200 transition hover:bg-blue-700 hover:text-white"><ArrowLeft className="h-5 w-5" /></button>
+            <button onClick={() => moveCarousel(1)} aria-label="Next project" className="absolute -right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white text-slate-900 shadow-lg ring-1 ring-slate-200 transition hover:bg-blue-700 hover:text-white"><ArrowRight className="h-5 w-5" /></button>
+          </div>
 
-                {/* Specs & Booking CTA */}
-                <div className="pt-4 border-t border-slate-100">
-                  <p className="text-[11px] font-mono text-slate-500 mb-3 bg-slate-50 p-2 rounded-lg border border-slate-200 truncate">
-                    {proj.specs}
-                  </p>
-
-                  <button
-                    onClick={() => onBookProjectScope(proj.title)}
-                    className="w-full py-2.5 px-3 rounded-xl bg-blue-50 hover:bg-blue-700 hover:text-white text-blue-700 text-xs font-bold transition-all flex items-center justify-center gap-1.5 group/btn"
-                  >
-                    <span>Request Similar Installation</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+          <div className="flex max-w-xl flex-1 flex-col justify-center text-left">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-700">Project {activeIndex + 1} of {filteredProjects.length}</p>
+            <h3 className="mt-3 text-2xl font-black leading-tight text-slate-950 sm:text-3xl">{activeProject.title}</h3>
+            <p className="mt-4 text-sm leading-relaxed text-slate-600">{activeProject.summary}</p>
+            <div className="mt-6 space-y-2 border-t border-slate-200 pt-5">
+              {activeProject.keyHighlights.map((highlight) => <div key={highlight} className="flex items-start gap-2 text-sm text-slate-700"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" /><span>{highlight}</span></div>)}
+            </div>
+            <p className="mt-6 rounded-xl border border-slate-200 bg-white p-3 text-xs font-mono text-slate-500">{activeProject.specs}</p>
+            <button onClick={() => onBookProjectScope(activeProject.title)} className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-blue-700 px-4 py-3 text-xs font-bold text-white transition hover:bg-blue-800 sm:w-fit">Request Similar Installation<ArrowRight className="h-4 w-4" /></button>
+            <div className="mt-6 flex gap-1.5" aria-label="Project carousel position">
+              {filteredProjects.map((project, index) => <button key={project.id} onClick={() => setActiveIndex(index)} aria-label={`View project ${index + 1}`} className={`h-1.5 rounded-full transition-all ${index === activeIndex ? 'w-8 bg-amber-500' : 'w-3 bg-slate-300 hover:bg-blue-400'}`} />)}
+            </div>
+          </div>
         </div>
-
       </div>
     </section>
   );

@@ -14,6 +14,7 @@ import {
   Zap 
 } from 'lucide-react';
 import { faqList } from '../data/projectsData';
+import { submitApiRequest } from '../lib/api';
 
 interface ContactSectionProps {
   onSuccessSubmit: (msg: string) => void;
@@ -30,17 +31,23 @@ export function ContactSection({ onSuccessSubmit }: ContactSectionProps) {
   });
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.phone) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
+    setSubmitError('');
+    try {
+      await submitApiRequest('inquiries', formData);
       setIsSubmitting(false);
       setSubmitted(true);
       onSuccessSubmit(`Thank you, ${formData.name}. An SK Electricals engineer has received your message and will reach out promptly.`);
-    }, 600);
+    } catch (error) {
+      setIsSubmitting(false);
+      setSubmitError(error instanceof Error ? error.message : 'Unable to submit inquiry. Please call us directly.');
+    }
   };
 
   const toggleFaq = (idx: number) => {
@@ -113,8 +120,8 @@ export function ContactSection({ onSuccessSubmit }: ContactSectionProps) {
                 <div className="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center">
                   <MapPin className="w-5 h-5" />
                 </div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">Headquarters</h4>
-                <p className="text-sm font-bold text-slate-900">Greater Accra & Regional Hubs</p>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500"> Head Office</h4>
+                <p className="text-sm font-bold text-slate-900">Community 9 Chusca Pharmacy</p>
                 <p className="text-[11px] text-slate-500">Full mobile workshop fleet</p>
               </div>
 
@@ -204,6 +211,7 @@ export function ContactSection({ onSuccessSubmit }: ContactSectionProps) {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  {submitError && <p role="alert" className="rounded-xl bg-red-50 border border-red-200 p-3 text-xs text-red-700">{submitError}</p>}
                   
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
@@ -215,7 +223,7 @@ export function ContactSection({ onSuccessSubmit }: ContactSectionProps) {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Kwame Mensah"
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="form-field-blinker w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900"
                     />
                   </div>
 
@@ -230,7 +238,7 @@ export function ContactSection({ onSuccessSubmit }: ContactSectionProps) {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="e.g. 024 123 4567"
-                        className="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="form-field-blinker w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900"
                       />
                     </div>
 
@@ -243,7 +251,7 @@ export function ContactSection({ onSuccessSubmit }: ContactSectionProps) {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="name@example.com"
-                        className="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="form-field-blinker w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900"
                       />
                     </div>
                   </div>
@@ -255,7 +263,7 @@ export function ContactSection({ onSuccessSubmit }: ContactSectionProps) {
                     <select
                       value={formData.serviceInterest}
                       onChange={(e) => setFormData({ ...formData, serviceInterest: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="form-field-blinker w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900"
                     >
                       <option value="CCTV Installation">CCTV Installation & Surveillance</option>
                       <option value="Upgrade Services">Upgrade Services (DB & Solar Hybrid)</option>
@@ -276,7 +284,7 @@ export function ContactSection({ onSuccessSubmit }: ContactSectionProps) {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Briefly mention your location, symptoms (e.g., tripping breakers, gate not opening, new house wiring), or number of cameras needed..."
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+                      className="form-field-blinker w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 resize-none"
                     />
                   </div>
 

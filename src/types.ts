@@ -24,6 +24,7 @@ export interface ProjectItem {
   duration: string;
   summary: string;
   image: string;
+  video?: string;
   keyHighlights: string[];
   specs: string;
 }

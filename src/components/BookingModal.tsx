@@ -13,6 +13,7 @@ import {
   Send 
 } from 'lucide-react';
 import { BookingFormData } from '../types';
+import { submitApiRequest } from '../lib/api';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -37,6 +38,7 @@ export function BookingModal({ isOpen, onClose, initialService, initialNotes }: 
   const [submitted, setSubmitted] = useState(false);
   const [bookingRef, setBookingRef] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   useEffect(() => {
     if (initialService) {
@@ -49,16 +51,21 @@ export function BookingModal({ isOpen, onClose, initialService, initialNotes }: 
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!formData.fullName || !formData.phone || !formData.address) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
+    setSubmitError('');
+    try {
+      const result = await submitApiRequest<{ reference: string }>('bookings', formData);
       setIsSubmitting(false);
-      setBookingRef(`SKE-${Math.floor(100000 + Math.random() * 900000)}`);
+      setBookingRef(result.reference);
       setSubmitted(true);
-    }, 700);
+    } catch (error) {
+      setIsSubmitting(false);
+      setSubmitError(error instanceof Error ? error.message : 'Unable to submit booking. Please call us directly.');
+    }
   };
 
   const handleResetAndClose = () => {
@@ -161,6 +168,7 @@ export function BookingModal({ isOpen, onClose, initialService, initialNotes }: 
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
+                {submitError && <p role="alert" className="rounded-xl bg-red-50 border border-red-200 p-3 text-xs text-red-700">{submitError}</p>}
                 
                 {/* Full Name & Phone */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -174,7 +182,7 @@ export function BookingModal({ isOpen, onClose, initialService, initialNotes }: 
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                       placeholder="e.g. Kwame Mensah"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      className="form-field-blinker w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900"
                     />
                   </div>
 
@@ -188,7 +196,7 @@ export function BookingModal({ isOpen, onClose, initialService, initialNotes }: 
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="e.g. 024 123 4567"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      className="form-field-blinker w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900"
                     />
                   </div>
                 </div>
@@ -205,7 +213,7 @@ export function BookingModal({ isOpen, onClose, initialService, initialNotes }: 
                       value={formData.address}
                       onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                       placeholder="e.g. East Legon, near Shell Station"
-                      className="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      className="form-field-blinker w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900"
                     />
                     <MapPin className="w-4 h-4 text-slate-400 absolute left-3 top-3.5" />
                   </div>
@@ -219,7 +227,7 @@ export function BookingModal({ isOpen, onClose, initialService, initialNotes }: 
                   <select
                     value={formData.serviceType}
                     onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="form-field-blinker w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900"
                   >
                     <option value="CCTV Installation & IP Surveillance Systems">CCTV Installation & IP Surveillance</option>
                     <option value="Electrical Upgrade & Solar Inverter Services">Electrical Upgrade & Solar Inverter</option>
@@ -240,7 +248,7 @@ export function BookingModal({ isOpen, onClose, initialService, initialNotes }: 
                     <select
                       value={formData.propertyType}
                       onChange={(e) => setFormData({ ...formData, propertyType: e.target.value as any })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      className="form-field-blinker w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900"
                     >
                       <option value="Residential">Residential (Home / Villa / Apartment)</option>
                       <option value="Commercial">Commercial (Office / Store / Restaurant)</option>
@@ -255,7 +263,7 @@ export function BookingModal({ isOpen, onClose, initialService, initialNotes }: 
                     <select
                       value={formData.urgency}
                       onChange={(e) => setFormData({ ...formData, urgency: e.target.value as any })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      className="form-field-blinker w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900"
                     >
                       <option value="Standard (Within 24-48h)">Standard (Within 24-48 Hours)</option>
                       <option value="Emergency (Immediate Dispatch)">🚨 Emergency (Immediate Dispatch)</option>
@@ -274,7 +282,7 @@ export function BookingModal({ isOpen, onClose, initialService, initialNotes }: 
                     value={formData.description}
                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                     placeholder="Describe any specifics: symptoms, gate weight, number of CCTV cameras, or breaker details..."
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"
+                    className="form-field-blinker w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 resize-none"
                   />
                 </div>
 
