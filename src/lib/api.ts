@@ -1,4 +1,5 @@
-const apiBaseUrl = (import.meta.env.VITE_API_URL || '/api').replace(/\/$/, '');
+const configuredApiUrl = import.meta.env.VITE_API_URL;
+const apiBaseUrl = (import.meta.env.DEV ? configuredApiUrl || '/api' : configuredApiUrl || 'https://skelectricals.onrender.com/api').replace(/\/$/, '');
 
 export async function submitApiRequest<T>(path: string, payload: unknown): Promise<T> {
   const response = await fetch(`${apiBaseUrl}/${path.replace(/^\//, '')}`, {

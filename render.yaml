@@ -29,4 +29,4 @@ services:
     publishPath: ./dist
     envVars:
       - key: VITE_API_URL
-        value: https://skelectricals-api.onrender.com/api
+        value: https://skelectricals.onrender.com/api

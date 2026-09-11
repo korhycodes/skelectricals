@@ -101,13 +101,13 @@ The repository includes [render.yaml](render.yaml), which defines the API and fr
 6. Confirm the API health check:
 
 ```text
-https://skelectricals-api.onrender.com/api/health
+https://skelectricals.onrender.com/api/health
 ```
 
 The frontend build uses:
 
 ```text
-VITE_API_URL=https://skelectricals-api.onrender.com/api
+VITE_API_URL=https://skelectricals.onrender.com/api
 ```
 
 The current Render configuration uses the free plan. MongoDB Atlas provides persistent submission storage; do not rely on the Render filesystem for customer records.
