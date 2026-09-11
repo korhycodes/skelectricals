@@ -75,33 +75,11 @@ async function sendEmailNotification(submission) {
   if (!response.ok) throw new Error(`Resend returned ${response.status}`);
 }
 
-async function sendWhatsAppNotification(submission) {
-  const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_WHATSAPP_FROM, NOTIFICATION_WHATSAPP_TO } = process.env;
-  if (!TWILIO_ACCOUNT_SID || !TWILIO_AUTH_TOKEN || !TWILIO_WHATSAPP_FROM || !NOTIFICATION_WHATSAPP_TO) return;
-  const params = new URLSearchParams({
-    From: TWILIO_WHATSAPP_FROM,
-    To: NOTIFICATION_WHATSAPP_TO,
-    Body: formatNotification(submission),
-  });
-  const credentials = Buffer.from(`${TWILIO_ACCOUNT_SID}:${TWILIO_AUTH_TOKEN}`).toString('base64');
-  const response = await fetch(`https://api.twilio.com/2010-04-01/Accounts/${TWILIO_ACCOUNT_SID}/Messages.json`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Basic ${credentials}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: params,
-  });
-  if (!response.ok) throw new Error(`Twilio returned ${response.status}`);
-}
-
 async function notifyBusiness(submission) {
-  const results = await Promise.allSettled([
-    sendEmailNotification(submission),
-    sendWhatsAppNotification(submission),
-  ]);
-  for (const result of results) {
-    if (result.status === 'rejected') console.error('Notification failed:', result.reason);
+  try {
+    await sendEmailNotification(submission);
+  } catch (error) {
+    console.error('Email notification failed:', error);
   }
 }
 

@@ -10,7 +10,7 @@ The project contains:
 - A Node.js API for submissions
 - MongoDB Atlas persistence
 - Optional email notifications through Resend
-- Optional WhatsApp notifications through Twilio
+- Email notifications through Resend
 - A vertical 9:16 project video carousel
 
 ## Requirements
@@ -87,16 +87,7 @@ NOTIFICATION_EMAIL_TO=business@example.com
 NOTIFICATION_FROM_EMAIL=SK Electricals <notifications@your-domain.com>
 ```
 
-WhatsApp notifications use Twilio:
-
-```text
-TWILIO_ACCOUNT_SID=AC...
-TWILIO_AUTH_TOKEN=...
-TWILIO_WHATSAPP_FROM=whatsapp:+14155238886
-NOTIFICATION_WHATSAPP_TO=whatsapp:+233...
-```
-
-The sender email domain must be verified with Resend. Twilio WhatsApp requires the sandbox for testing or an approved WhatsApp sender for production.
+The sender email domain must be verified with Resend.
 
 ## Render Deployment
 

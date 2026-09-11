@@ -42,12 +42,12 @@ export function ProjectsShowcase({ onBookProjectScope }: ProjectsShowcaseProps) 
         </div>
 
         <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 lg:flex-row lg:items-stretch lg:justify-center">
-          <div className="relative w-full max-w-[360px] shrink-0">
-            <div className="aspect-[9/16] overflow-hidden rounded-[2rem] border-[6px] border-slate-950 bg-slate-950 shadow-2xl">
+          <div className="relative w-full max-w-[280px] shrink-0">
+            <div className="aspect-[9/16] overflow-hidden rounded-3xl border-4 border-slate-950 bg-slate-950 shadow-2xl">
               <AnimatePresence mode="wait">
                 <motion.div key={activeProject.id} initial={{ opacity: 0, scale: 1.04 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.98 }} transition={{ duration: 0.3 }} className="relative h-full w-full">
                   {activeProject.video ? (
-                    <video className="h-full w-full object-cover" src={activeProject.video} poster={activeProject.image} controls playsInline preload="metadata" />
+                    <video className="h-full w-full object-cover" src={activeProject.video} poster={activeProject.image} autoPlay muted loop playsInline preload="auto" />
                   ) : (
                     <img src={activeProject.image} alt={activeProject.title} className="h-full w-full object-cover" referrerPolicy="no-referrer" />
                   )}
